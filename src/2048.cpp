@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "2048.hpp"
 
 int main(void) {
    std::cout << "Hello World!" << std::endl;
