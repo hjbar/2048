@@ -1,8 +1,9 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 using namespace std;
 
 typedef vector<vector<int>> Plateau;
 
-void affiche_plateau(Plateau t);
+string affiche_plateau(Plateau t);
