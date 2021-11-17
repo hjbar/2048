@@ -10,5 +10,6 @@ using namespace std;
 typedef vector<vector<int>> Plateau;
 
 int taille_nombre(int nombre);
-string affiche_plateau(string role, Plateau t);
-void test_affiche_plateau();
+string plateau_to_string(Plateau t);
+void affiche_plateau(string plateau);
+void test_plateau_to_string();
