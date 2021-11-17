@@ -2,6 +2,7 @@
 #include <sstream>
 #include <vector>
 #include "affichage.hpp"
+#include "plateau.hpp"
 
 using namespace std;
 

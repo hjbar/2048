@@ -26,11 +26,15 @@ string affiche_plateau(string role, Plateau t) {
    for(vector<int> ligne : t) {
       os << "*";
       for(int nombre : ligne) {
+         if(nombre > 0){
          int pos = ((5-taille_nombre(nombre))/2);
          if(pos > 0) {
          os << setw(pos) << " " << setw(5-pos) << left << nombre << "*";
          } else {
             os << setw(5) << left << nombre << "*";
+         }
+         } else {
+            os << setw(5) << " " << "*";
          }
       }
       os << endl << "*************************" << endl;
