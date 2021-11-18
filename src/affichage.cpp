@@ -26,12 +26,8 @@ string plateau_to_string(Plateau t) {
       os << "*";
       for(int nombre : ligne) {
          if(nombre > 0){
-            const int pos = ((5-taille_nombre(nombre))/2);
-            if(pos > 0) {
-               os << setw(pos) << " " << setw(5-pos) << left << nombre << "*";
-            } else {
-               os << setw(5) << left << nombre << "*";
-            }
+            const int pos = 3 - ((1+taille_nombre(nombre))/2); // vaut 2 si taille_nombre = 1 ou 2, vaut 1 si taille_nombre = 3 ou 4
+            os << setw(5-pos) << right << nombre << setw(pos) << " " << "*";
          } else {
             os << setw(5) << " " << "*";
          }

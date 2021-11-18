@@ -7,18 +7,11 @@
  * @return tab modifie
  **/
 Plateau deplacement(string direction, Plateau tab) {
-   //if(direction == "h") {
-   //   ;
-   //} else if (direction == "b") {
-   //   ;
-   //} else if (direction == "g") {
-   //   ;
-   //} else
    if (direction == "d") {
       for(int i = 3 ; i >= 0 ; i = i - 1) {
          for(int j = 3 ; j >= 1 ; j = j - 1) {
             if(tab[i][j] == tab[i][j-1]) {
-               tab[i][j] = tab[i][j] + tab[i][j-1];
+              tab[i][j] = tab[i][j] + tab[i][j-1];
                tab[i][j-1] = 0;
             }
          }
