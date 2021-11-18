@@ -1,6 +1,10 @@
 #include "test.hpp"
 
 
+/** Fonction qui effectue un test sur plateau_to_string
+ * @param got la chaine de caractere renvoyee par plateau_to_string
+ * @param expected la chaine de caractere que l'on attend
+ **/
 void assert_string_equal(string got, string expected) {
 
   if (got != expected) {
@@ -12,7 +16,7 @@ void assert_string_equal(string got, string expected) {
 }
 
 
-/** Effectue une serie de test sur la fonction affiche_plateau **/
+/** Lance une serie de test sur la fonction plateau_to_string **/
 void test_plateau_to_string() {
 
   string got = plateau_to_string ({{2,4,8,16}, {32,64,128,256}, {512,1024,2048,4096}, {0,0,0,0}});
@@ -30,10 +34,53 @@ void test_plateau_to_string() {
 
   assert_string_equal(got3, expected3);
 
-
 }
 
 
+/** Teste la fonction genere_nombre **/
+void test_genere_nombre() {
+  int nombre = genere_nombre();
+  assert(nombre == 2 or nombre == 4);
+}
+
+
+/** Teste la fonction init_plateau **/
+void test_init_plateau() {
+  Plateau tab = init_plateau(2);
+  int nb_deux = 0;
+  for(vector<int> ligne : tab) {
+    for(int nombre : ligne) {
+      if(nombre == 2) {
+        nb_deux++;
+      } else {
+        assert(nombre == 0);
+      }
+    }
+  }
+  assert(nb_deux == 1);
+}
+
+
+/** Teste la fonction ajoute_nombre_plateau **/
+void test_ajoute_nombre_plateau() {
+  Plateau tab = {{0,2,0,2}, {2,0,2,0}, {2,2,0,0}, {0,0,2,2}};
+  int nombre_deux_ou_quatre = 0;
+  tab = ajoute_nombre_plateau(tab, genere_nombre());
+  for(vector<int> ligne : tab) {
+    for(int nombre : ligne) {
+      if(nombre == 2 or nombre == 4) {
+        nombre_deux_ou_quatre++;
+      }
+    }
+  }
+  assert(nombre_deux_ou_quatre == 9);
+}
+
+
+/** Fonction qui lance le test de toutes les fonctions **/
 void test_all() {
   test_plateau_to_string();
+  test_genere_nombre();
+  test_init_plateau();
+  test_ajoute_nombre_plateau();
 }

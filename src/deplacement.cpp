@@ -2,12 +2,12 @@
 
 
 /** Deplacement une fonction qui simule un deplacement de jeu
- * @param direction une chaine de caractere valant h, b, g, d
+ * @param direction une chaine de caractere valant Right, Left, Top, Bottom
  * @param tab un plateau de jeu
  * @return tab modifie
  **/
-Plateau deplacement(string direction, Plateau tab) {
-   if (direction == "d") {
+Plateau deplacement(Direction d, Plateau tab) {
+   if (d == Right) {
       for(int i = 3 ; i >= 0 ; i = i - 1) {
          for(int j = 3 ; j >= 1 ; j = j - 1) {
             if(tab[i][j] == tab[i][j-1]) {

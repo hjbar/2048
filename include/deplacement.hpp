@@ -7,5 +7,6 @@
 using namespace std;
 
 typedef vector<vector<int>> Plateau;
+enum Direction { Left, Right, Top, Bottom };
 
-Plateau deplacement(string direction, Plateau tab);
+Plateau deplacement(Direction d, Plateau tab);
