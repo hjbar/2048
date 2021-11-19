@@ -1,12 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include <sstream>
-#include <vector>
 
 #include "affichage.hpp"
 #include "plateau.hpp"
 #include "deplacement.hpp"
 #include "test.hpp"
+#include "score.hpp"
 
 using namespace std;

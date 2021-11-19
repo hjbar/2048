@@ -77,10 +77,32 @@ void test_ajoute_nombre_plateau() {
 }
 
 
+/** Lance une serie de test pour la fonction score_nombre **/
+void test_score_nombre() {
+  assert(score_nombre(0) == 0);
+  assert(score_nombre(2) == 0);
+  assert(score_nombre(4) == 4);
+  assert(score_nombre(64) == 320);
+  assert(score_nombre(1024) == 9216);
+  assert(score_nombre(2048) == 20480);
+}
+
+
+/** Lance une serie de test pour la fonction score_plateau **/
+void test_score_plateau() {
+  assert(score_plateau({{4,0,0,2},{8,0,0,0},{4,2,0,0},{64,16,4,0}}, 7) == 368);
+  assert(score_plateau({{0,0,0,0},{0,0,0,0},{0,0,0,2},{8,0,2,0}}, 0) == 16);
+  assert(score_plateau({{0,0,4,0},{0,0,0,0},{2,0,0,0},{16,4,2,0}}, 3) == 44);
+  assert(score_plateau({{0,0,0,0},{0,0,2,0},{2,0,0,0},{4,8,8,2}}, 3) == 24);
+}
+
+
 /** Fonction qui lance le test de toutes les fonctions **/
 void test_all() {
   test_plateau_to_string();
   test_genere_nombre();
   test_init_plateau();
   test_ajoute_nombre_plateau();
+  test_score_nombre();
+  test_score_plateau();
 }

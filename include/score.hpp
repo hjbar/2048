@@ -6,6 +6,6 @@
 using namespace std;
 
 typedef vector<vector<int>> Plateau;
-enum Direction { Left, Right, Top, Bottom };
 
-Plateau deplacement(Direction d, Plateau tab);
+int score_nombre(int nombre);
+int score_plateau(Plateau tab, int nombre_de_quatre);

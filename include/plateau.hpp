@@ -2,8 +2,6 @@
 
 #include <iostream>
 #include <vector>
-#include <assert.h>
-#include <cstdlib>
 
 using namespace std;
 
