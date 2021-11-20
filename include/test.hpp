@@ -18,4 +18,5 @@ void test_init_plateau();
 void test_ajoute_nombre_plateau();
 void test_score_nombre();
 void test_score_plateau();
+void test_fin_de_partie();
 void test_all();

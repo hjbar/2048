@@ -31,3 +31,33 @@ int score_plateau(Plateau tab, int nombre_de_quatre) {
    }
    return score - (4*nombre_de_quatre);
 }
+
+
+/** Fonction qui teste si la partie est terminée
+ * @param tab un plateau de jeu
+ * @return un bool, true si la partie est terminée, false sinon
+ **/
+bool fin_de_partie(Plateau tab) {
+   for(vector<int> ligne : tab) {
+      for(int nombre : ligne) {
+         if(nombre == 0) {
+            return false;
+         }
+      }
+   }
+   for(int i = 0 ; i <= 3 ; i++) {
+      for(int j = 0 ; j <=2 ; j++) {
+         if(tab[i][j] == tab[i][j+1]) {
+            return false;
+         }
+      }
+   }
+   for(int n = 0 ; n <=2 ; n++) {
+      for(int k = 0 ; k <=3 ; k++) {
+         if(tab[n][k] == tab[n+1][k]) {
+            return false;
+         }
+      }
+   }
+   return true;
+}

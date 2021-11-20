@@ -97,6 +97,17 @@ void test_score_plateau() {
 }
 
 
+/** Lance une serie de test pour la fonction fin_de_partie **/
+void test_fin_de_partie() {
+  assert(fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,8,16}}));
+  assert(fin_de_partie({{2,4,2,4},{4,2,4,2},{2,4,2,4},{4,2,4,2}}));
+  assert(not fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,0,4096},{2,4,8,16}}));
+  assert(not fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,16,16}}));
+  assert(not fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,2048,16},{2,4,8,16}}));
+  assert(not fin_de_partie({{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
+}
+
+
 /** Fonction qui lance le test de toutes les fonctions **/
 void test_all() {
   test_plateau_to_string();
@@ -105,4 +116,5 @@ void test_all() {
   test_ajoute_nombre_plateau();
   test_score_nombre();
   test_score_plateau();
+  test_fin_de_partie();
 }
