@@ -108,6 +108,26 @@ void test_fin_de_partie() {
 }
 
 
+/** Lance une serie de test pour la fonction valide_direction **/
+void test_valide_direction() {
+  assert(valide_direction("d"));
+  assert(valide_direction("g"));
+  assert(valide_direction("b"));
+  assert(valide_direction("h"));
+  assert(not valide_direction("z"));
+  assert(not valide_direction("a"));
+}
+
+
+/** Lance une serie de test pour la fonction string_to_direction **/
+void test_string_to_direction() {
+  assert(string_to_direction("d") == Right);
+  assert(string_to_direction("g") == Left);
+  assert(string_to_direction("b") == Bottom);
+  assert(string_to_direction("h") == Top);
+}
+
+
 /** Fonction qui lance le test de toutes les fonctions **/
 void test_all() {
   test_plateau_to_string();
@@ -117,4 +137,6 @@ void test_all() {
   test_score_nombre();
   test_score_plateau();
   test_fin_de_partie();
+  test_string_to_direction();
+  test_valide_direction();
 }
