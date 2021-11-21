@@ -54,6 +54,7 @@ Plateau decalage_nombre(Direction d, Plateau tab) {
 
 /** Deplacement une fonction qui simule un deplacement de jeu
  * @param d une Direction valant Right, Left, Top ou Bottom
+  dV
  * @param tab un plateau de jeu
  * @return tab modifie
  **/

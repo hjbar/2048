@@ -19,6 +19,7 @@ void test_init_plateau();
 void test_ajoute_nombre_plateau();
 void test_score_nombre();
 void test_score_plateau();
+void test_plateau_est_plein();
 void test_fin_de_partie();
 void test_valide_direction();
 void test_string_to_direction();

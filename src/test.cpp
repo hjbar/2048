@@ -97,6 +97,14 @@ void test_score_plateau() {
 }
 
 
+/** Lance une serie de test pour la fonction plateau_est_plein **/
+void test_plateau_est_plein() {
+  assert(not plateau_est_plein({{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
+  assert(not plateau_est_plein({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,8,0}}));
+  assert(plateau_est_plein({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2048,1024,512,256}}));
+}
+
+
 /** Lance une serie de test pour la fonction fin_de_partie **/
 void test_fin_de_partie() {
   assert(fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,8,16}}));
@@ -130,27 +138,27 @@ void test_string_to_direction() {
 
 /** Lance une serie de test pour la fonction decalage_nombre **/
 void test_decalage_nombre() {
-  Plateau tab_expected = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
-  assert(decalage_nombre(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected);
+  Plateau tab_expected_d1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
+  assert(decalage_nombre(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_d1);
 
-  Plateau tab_expected2 = {{0,0,2,2},{0,0,4,4},{4,4,4,4},{0,2,2,2}};
-  assert(decalage_nombre(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected2);
+  Plateau tab_expected_d2 = {{0,0,2,2},{0,0,4,4},{4,4,4,4},{0,2,2,2}};
+  assert(decalage_nombre(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_d2);
 
-  Plateau tab_expected3 = {{0,0,2,2},{0,0,4,4},{0,4,4,4},{0,2,2,2}};
-  assert(decalage_nombre(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected3);
+  Plateau tab_expected_d3 = {{0,0,2,2},{0,0,4,4},{0,4,4,4},{0,2,2,2}};
+  assert(decalage_nombre(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_d3);
 }
 
 
 /** Lance une serie de test pour la fonction deplacement **/
 void test_deplacement() {
-  Plateau tab_expected = {{0,16,2,32},{0,0,32,32},{0,4,4,4},{0,4,4,8}};
-  assert(deplacement(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected);
+  Plateau tab_expected_d1 = {{0,16,2,32},{0,0,32,32},{0,4,4,4},{0,4,4,8}};
+  assert(deplacement(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_d1);
 
-  Plateau tab_expected2 = {{0,0,0,4},{0,0,0,8},{0,0,8,8},{0,0,2,4}};
-  assert(deplacement(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected2);
+  Plateau tab_expected_d2 = {{0,0,0,4},{0,0,0,8},{0,0,8,8},{0,0,2,4}};
+  assert(deplacement(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_d2);
 
-  Plateau tab_expected3 = {{0,0,0,4},{0,0,0,8},{0,0,4,8},{0,0,2,4}};
-  assert(deplacement(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected3);
+  Plateau tab_expected_d3 = {{0,0,0,4},{0,0,0,8},{0,0,4,8},{0,0,2,4}};
+  assert(deplacement(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_d3);
 }
 
 
@@ -162,6 +170,7 @@ void test_all() {
   test_ajoute_nombre_plateau();
   test_score_nombre();
   test_score_plateau();
+  test_plateau_est_plein();
   test_fin_de_partie();
   test_valide_direction();
   test_string_to_direction();

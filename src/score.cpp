@@ -33,6 +33,22 @@ int score_plateau(Plateau tab, int nombre_de_quatre) {
 }
 
 
+/** Fonction qui teste si le plateau est plein
+ * @param tab un plateau de jeu
+ * @return un bool, true si le plateau est plein, false sinon
+ * **/
+bool plateau_est_plein(Plateau tab) {
+   for(vector<int> ligne : tab) {
+      for(int nombre : ligne) {
+         if(nombre == 0) {
+            return false;
+         }
+      }
+   }
+   return true;
+}
+
+
 /** Fonction qui teste si la partie est terminée
  * @param tab un plateau de jeu
  * @return un bool, true si la partie est terminée, false sinon
