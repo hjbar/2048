@@ -48,6 +48,18 @@ Plateau decalage_nombre(Direction d, Plateau tab) {
          }
       }
    }
+   if (d == Left) {
+      for(int i = 0 ; i < 4 ; i++) {
+         for(int _ = 0 ; _ < 3 ; _++) {
+            for(int j = 0 ; j < 3 ; j++) {
+               if(tab[i][j] == 0 and tab[i][j+1] != 0) {
+                  tab[i][j] = tab[i][j+1];
+                  tab[i][j+1] = 0;
+               }
+            }
+         }
+      }
+   }
    return tab;
 }
 
@@ -66,6 +78,18 @@ Plateau deplacement(Direction d, Plateau tab) {
             if(tab[k][n] == tab[k][n-1]) {
                tab[k][n] = tab[k][n] + tab[k][n-1];
                tab[k][n-1] = 0;
+            }
+         }
+      }
+      tab = decalage_nombre(d, tab);
+   }
+   if (d == Left) {
+      tab = decalage_nombre(d, tab);
+      for(int k = 0 ; k < 4 ; k++) {
+         for(int n = 0 ; n < 3 ; n++) {
+            if(tab[k][n] == tab[k][n+1]) {
+               tab[k][n] = tab[k][n] + tab[k][n+1];
+               tab[k][n+1] = 0;
             }
          }
       }
