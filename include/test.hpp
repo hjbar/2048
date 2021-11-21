@@ -6,6 +6,7 @@
 #include "score.hpp"
 
 #include <assert.h>
+#include <cassert>
 
 
 using namespace std;
@@ -21,4 +22,6 @@ void test_score_plateau();
 void test_fin_de_partie();
 void test_valide_direction();
 void test_string_to_direction();
+void test_decalage_nombre();
+void test_deplacement();
 void test_all();
