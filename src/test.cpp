@@ -140,18 +140,30 @@ void test_string_to_direction() {
 void test_decalage_nombre() {
   Plateau tab_expected_d1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
   Plateau tab_expected_g1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
+  Plateau tab_expected_b1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
+  Plateau tab_expected_h1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
   assert(decalage_nombre(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_d1);
   assert(decalage_nombre(Left, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_g1);
+  assert(decalage_nombre(Bottom, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_b1);
+  assert(decalage_nombre(Top, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_h1);
 
   Plateau tab_expected_d2 = {{0,0,2,2},{0,0,4,4},{4,4,4,4},{0,2,2,2}};
   Plateau tab_expected_g2 = {{2,2,0,0},{4,4,0,0},{4,4,4,4},{2,2,2,0}};
+  Plateau tab_expected_b2 = {{2,0,0,0},{4,0,2,4},{4,0,4,4},{2,4,2,2}};
+  Plateau tab_expected_h2 = {{2,4,2,4},{4,0,4,4},{4,0,2,2},{2,0,0,0}};
   assert(decalage_nombre(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_d2);
   assert(decalage_nombre(Left, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_g2);
+  assert(decalage_nombre(Bottom, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_b2);
+  assert(decalage_nombre(Top, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_h2);
 
   Plateau tab_expected_d3 = {{0,0,2,2},{0,0,4,4},{0,4,4,4},{0,2,2,2}};
   Plateau tab_expected_g3 = {{2,2,0,0},{4,4,0,0},{4,4,4,0},{2,2,2,0}};
+  Plateau tab_expected_b3 = {{0,2,0,0},{0,4,0,2},{0,4,4,4},{2,2,4,2}};
+  Plateau tab_expected_h3 = {{2,2,4,2},{0,4,4,4},{0,4,0,2},{0,2,0,0}};
   assert(decalage_nombre(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_d3);
   assert(decalage_nombre(Left, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_g3);
+  assert(decalage_nombre(Bottom, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_b3);
+  assert(decalage_nombre(Top, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_h3);
 }
 
 
@@ -159,18 +171,30 @@ void test_decalage_nombre() {
 void test_deplacement() {
   Plateau tab_expected_d1 = {{0,16,2,32},{0,0,32,32},{0,4,4,4},{0,4,4,8}};
   Plateau tab_expected_g1 = {{16,2,32,0},{32,32,0,0},{4,4,4,0},{4,4,8,0}};
+  Plateau tab_expected_b1 = {{0,0,0,0},{32,2,32,32},{4,16,2,4},{2,4,4,8}};
+  Plateau tab_expected_h1 = {{32,2,32,32},{4,16,2,4},{2,4,4,8},{0,0,0,0}};
   assert(deplacement(Right, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_d1);
   assert(deplacement(Left, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_g1);
+  assert(deplacement(Bottom, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_b1);
+  assert(deplacement(Top, {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}}) == tab_expected_h1);
 
   Plateau tab_expected_d2 = {{0,0,0,4},{0,0,0,8},{0,0,8,8},{0,0,2,4}};
   Plateau tab_expected_g2 = {{4,0,0,0},{8,0,0,0},{8,8,0,0},{4,2,0,0}};
+  Plateau tab_expected_b2 = {{0,0,0,0},{2,0,2,0},{8,0,4,8},{2,4,2,2}};
+  Plateau tab_expected_h2 = {{2,4,2,8},{8,0,4,2},{2,0,2,0},{0,0,0,0}};
   assert(deplacement(Right, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_d2);
   assert(deplacement(Left, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_g2);
+  assert(deplacement(Bottom, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_b2);
+  assert(deplacement(Top, {{2,0,2,0},{4,0,0,4},{4,4,4,4},{2,0,2,2}}) == tab_expected_h2);
 
   Plateau tab_expected_d3 = {{0,0,0,4},{0,0,0,8},{0,0,4,8},{0,0,2,4}};
   Plateau tab_expected_g3 = {{4,0,0,0},{8,0,0,0},{8,4,0,0},{4,2,0,0}};
+  Plateau tab_expected_b3 = {{0,0,0,0},{0,2,0,2},{0,8,0,4},{2,2,8,2}};
+  Plateau tab_expected_h3 = {{2,2,8,2},{0,8,0,4},{0,2,0,2},{0,0,0,0}};
   assert(deplacement(Right, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_d3);
   assert(deplacement(Left, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_g3);
+  assert(deplacement(Bottom, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_b3);
+  assert(deplacement(Top, {{0,2,0,2},{0,4,4,0},{0,4,4,4},{2,2,0,2}}) == tab_expected_h3);
 }
 
 

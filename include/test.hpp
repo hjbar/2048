@@ -6,7 +6,6 @@
 #include "score.hpp"
 
 #include <assert.h>
-#include <cassert>
 
 
 using namespace std;

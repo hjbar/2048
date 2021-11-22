@@ -60,6 +60,30 @@ Plateau decalage_nombre(Direction d, Plateau tab) {
          }
       }
    }
+   if (d == Bottom) {
+      for(int j = 0 ; j < 4 ; j++) {
+         for(int _ = 0 ; _ < 3 ; _++) {
+            for(int i = 3 ; i > 0 ; i = i - 1) {
+               if(tab[i][j] == 0 and tab[i-1][j] != 0) {
+                  tab[i][j] = tab[i-1][j];
+                  tab[i-1][j] = 0;
+               }
+            }
+         }
+      }
+   }
+   if (d == Top) {
+      for(int j = 0 ; j < 4 ; j++) {
+         for(int _ = 0 ; _ < 3 ; _++) {
+            for(int i = 0 ; i < 3 ; i++) {
+               if(tab[i][j] == 0 and tab[i+1][j] != 0) {
+                  tab[i][j] = tab[i+1][j];
+                  tab[i+1][j] = 0;
+               }
+            }
+         }
+      }
+   }
    return tab;
 }
 
@@ -90,6 +114,30 @@ Plateau deplacement(Direction d, Plateau tab) {
             if(tab[k][n] == tab[k][n+1]) {
                tab[k][n] = tab[k][n] + tab[k][n+1];
                tab[k][n+1] = 0;
+            }
+         }
+      }
+      tab = decalage_nombre(d, tab);
+   }
+   if (d == Bottom) {
+      tab = decalage_nombre(d, tab);
+      for(int k = 3 ; k > 0 ; k = k - 1) {
+         for(int n = 0 ; n < 4 ; n++) {
+            if(tab[k][n] == tab[k-1][n]) {
+               tab[k][n] = tab[k][n] + tab[k-1][n];
+               tab[k-1][n] = 0;
+            }
+         }
+      }
+      tab = decalage_nombre(d, tab);
+   }
+   if (d == Top) {
+      tab = decalage_nombre(d , tab);
+      for(int k = 0 ; k < 3 ; k++) {
+         for(int n = 0 ; n < 4 ; n++) {
+            if(tab[k][n] == tab[k+1][n]) {
+               tab[k][n] = tab[k][n] + tab[k+1][n];
+               tab[k+1][n] = 0;
             }
          }
       }
