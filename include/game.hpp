@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 #include "affichage.hpp"
-#include "plateau.hpp"
 #include "deplacement.hpp"
-#include "test.hpp"
+#include "plateau.hpp"
 #include "score.hpp"
-#include "game.hpp"
 
 using namespace std;
+
+typedef vector<vector<int>> Plateau;
+
+void jeu();

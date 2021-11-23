@@ -47,9 +47,10 @@ int main(void) {
       cout << "Entrer 'game' pour rejouer, entrer 'quit' pour quitter le jeu" << endl;
       cin >> decision;
       if(decision == "quit") {
-         return 0;
+         arret_partie = true;
       }
    }
+   cout << "Merci d'avoir joué ! A bientot" << endl;
 
    return 0;
 }

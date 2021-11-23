@@ -4,6 +4,7 @@
 #include "deplacement.hpp"
 #include "plateau.hpp"
 #include "score.hpp"
+#include "game.hpp"
 
 #include <assert.h>
 
