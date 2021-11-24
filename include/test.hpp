@@ -25,4 +25,15 @@ void test_valide_direction();
 void test_string_to_direction();
 void test_decalage_nombre();
 void test_deplacement();
+
+
+/** Lance une serie de test sur la fonction commande_est_valide **/
+void test_commande_est_valide();
+
+/** Lance une serie de test sur la fonction calcul_nombre_de_quatre **/
+void test_calcul_nombre_quatre();
+
+/** Lance une serie de test sur la fonction deplacement_possible **/
+void test_deplacement_possible();
+
 void test_all();

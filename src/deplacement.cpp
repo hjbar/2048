@@ -6,10 +6,7 @@
  * @return true si valide, false sinon
  **/
 bool valide_direction(string c) {
-   if(c == "d" or c == "g" or c == "b" or c == "h") {
-      return true;
-   }
-   return false;
+   return ( (c == "d") or (c == "g") or (c == "b") or (c == "h") );
 }
 
 
@@ -90,7 +87,6 @@ Plateau decalage_nombre(Direction d, Plateau tab) {
 
 /** Deplacement une fonction qui simule un deplacement de jeu
  * @param d une Direction valant Right, Left, Top ou Bottom
-  dV
  * @param tab un plateau de jeu
  * @return tab modifie
  **/
@@ -144,4 +140,9 @@ Plateau deplacement(Direction d, Plateau tab) {
       tab = decalage_nombre(d, tab);
    }
    return tab;
+}
+
+
+bool deplacement_possible(Direction d, Plateau tab) {
+   return not(tab == deplacement(d, tab));
 }

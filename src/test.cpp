@@ -198,6 +198,49 @@ void test_deplacement() {
 }
 
 
+void test_commande_est_valide() {
+  assert(commande_est_valide("quit"));
+  assert(commande_est_valide("game"));
+  assert(not commande_est_valide("quitter"));
+  assert(not commande_est_valide("rejouer"));
+}
+
+
+void test_calcul_nombre_quatre() {
+  assert(calcul_nombre_quatre(0, 2) == 0);
+  assert(calcul_nombre_quatre(0, 4) == 1);
+  assert(calcul_nombre_quatre(10, 2) == 10);
+  assert(calcul_nombre_quatre(10, 4) == 11);
+}
+
+
+void test_deplacement_possible() {
+  Plateau tab = {{0,0,0,4},{2,4,8,16},{64,32,16,0},{0,0,0,0}};
+  assert(deplacement_possible(Right, tab));
+  assert(deplacement_possible(Left, tab));
+  assert(deplacement_possible(Bottom, tab));
+  assert(deplacement_possible(Top, tab));
+
+  Plateau tab2 = {{2,4,8,16},{4,8,16,32},{8,16,32,64},{16,32,64,128}};
+  assert(not deplacement_possible(Right, tab2));
+  assert(not deplacement_possible(Left, tab2));
+  assert(not deplacement_possible(Bottom, tab2));
+  assert(not deplacement_possible(Top, tab2));
+
+  Plateau tab3 = {{0,0,2,4},{0,0,4,2},{0,0,0,0},{0,0,0,0}};
+  assert(not deplacement_possible(Right, tab3));
+  assert(deplacement_possible(Left, tab3));
+  assert(deplacement_possible(Bottom, tab3));
+  assert(not deplacement_possible(Top, tab3));
+
+  Plateau tab4 = {{0,0,0,0},{0,0,0,0},{2,4,0,0},{4,2,0,0}};
+  assert(deplacement_possible(Right, tab4));
+  assert(not deplacement_possible(Left, tab4));
+  assert(not deplacement_possible(Bottom, tab4));
+  assert(deplacement_possible(Top, tab4));
+}
+
+
 /** Fonction qui lance le test de toutes les fonctions **/
 void test_all() {
   test_plateau_to_string();
@@ -212,4 +255,7 @@ void test_all() {
   test_string_to_direction();
   test_decalage_nombre();
   test_deplacement();
+  test_commande_est_valide();
+  test_calcul_nombre_quatre();
+  test_deplacement_possible();
 }

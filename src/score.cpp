@@ -1,6 +1,15 @@
 #include "score.hpp"
 
 
+int calcul_nombre_quatre(int nb_quatre, int nb_alea) {
+   if(nb_alea == 4) {
+      return nb_quatre + 1;
+   } else {
+      return nb_quatre;
+   }
+}
+
+
 /** Fonction qui calcule les points donnés par un nombre
  * @param nombre un entier
  * @return le nombre de points obtenus
@@ -54,13 +63,12 @@ bool plateau_est_plein(Plateau tab) {
  * @return un bool, true si la partie est terminée, false sinon
  **/
 bool fin_de_partie(Plateau tab) {
-   for(vector<int> ligne : tab) {
-      for(int nombre : ligne) {
-         if(nombre == 0) {
-            return false;
-         }
-      }
+
+   bool tab_est_plein = plateau_est_plein(tab);
+   if(not tab_est_plein) {
+      return false;
    }
+
    for(int i = 0 ; i <= 3 ; i++) {
       for(int j = 0 ; j <=2 ; j++) {
          if(tab[i][j] == tab[i][j+1]) {
@@ -68,6 +76,7 @@ bool fin_de_partie(Plateau tab) {
          }
       }
    }
+
    for(int n = 0 ; n <=2 ; n++) {
       for(int k = 0 ; k <=3 ; k++) {
          if(tab[n][k] == tab[n+1][k]) {
@@ -75,5 +84,6 @@ bool fin_de_partie(Plateau tab) {
          }
       }
    }
+
    return true;
 }
