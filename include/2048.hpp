@@ -8,5 +8,3 @@
 #include "test.hpp"
 #include "score.hpp"
 #include "game.hpp"
-
-using namespace std;

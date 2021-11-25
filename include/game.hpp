@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <optional>
+#include <cstring>
 
 #include "affichage.hpp"
 #include "deplacement.hpp"
@@ -13,9 +15,5 @@ using namespace std;
 typedef vector<vector<int>> Plateau;
 
 
-/** Fonction qui verifie si la commande de fin de partie est egale a game ou quit
- * @param commande une chaine de caractere
- * @return true si commande = game ou quit, false sinon
- **/
-bool commande_est_valide(string commande);
-void jeu();
+/** Fonction qui simule une partie de 2048 **/
+void jeu(void);

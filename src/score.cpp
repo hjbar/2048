@@ -10,13 +10,11 @@ int calcul_nombre_quatre(int nb_quatre, int nb_alea) {
 }
 
 
-/** Fonction qui calcule les points donnés par un nombre
- * @param nombre un entier
- * @return le nombre de points obtenus
- **/
 int score_nombre(int nombre) {
    int score = 0;
+   // Si nombre vaut 32, pour creer ce nombre on a obtenu les points de 32*1 + 16*2 + 8*4 + 4*8, d'ou la creation de la variable coefficient
    int coefficient = 1;
+   // Le nombre 2 etant obligatoirement generer par le jeu, on ne peut pas en obtenir de points
    while(nombre > 2) {
       score = score + (nombre * coefficient);
       nombre = (nombre / 2);
@@ -26,11 +24,6 @@ int score_nombre(int nombre) {
 }
 
 
-/** Fonction qui renvoie les points du plateau en fonction du nombre de 4 generes aleatoirement
- * @param tab un plateau de jeu
- * @param nombre_de_quatre un entier correspond un nombre de 4 apparue de maniere aleatoire
- * @return le nombre de points du plateau de jeu
- **/
 int score_plateau(Plateau tab, int nombre_de_quatre) {
    int score = 0;
    for(vector<int> ligne : tab) {
@@ -38,14 +31,11 @@ int score_plateau(Plateau tab, int nombre_de_quatre) {
          score = score + score_nombre(nombre);
       }
    }
+   // Les nombres 4 generes par le jeu ne rapporte pas de points, il faut donc les retirer de score
    return score - (4*nombre_de_quatre);
 }
 
 
-/** Fonction qui teste si le plateau est plein
- * @param tab un plateau de jeu
- * @return un bool, true si le plateau est plein, false sinon
- * **/
 bool plateau_est_plein(Plateau tab) {
    for(vector<int> ligne : tab) {
       for(int nombre : ligne) {
@@ -58,10 +48,6 @@ bool plateau_est_plein(Plateau tab) {
 }
 
 
-/** Fonction qui teste si la partie est terminée
- * @param tab un plateau de jeu
- * @return un bool, true si la partie est terminée, false sinon
- **/
 bool fin_de_partie(Plateau tab) {
 
    bool tab_est_plein = plateau_est_plein(tab);

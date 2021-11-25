@@ -1,10 +1,6 @@
 #include "test.hpp"
 
 
-/** Fonction qui effectue un test sur plateau_to_string
- * @param got la chaine de caractere renvoyee par plateau_to_string
- * @param expected la chaine de caractere que l'on attend
- **/
 void assert_string_equal(string got, string expected) {
 
   if (got != expected) {
@@ -16,8 +12,7 @@ void assert_string_equal(string got, string expected) {
 }
 
 
-/** Lance une serie de test sur la fonction plateau_to_string **/
-void test_plateau_to_string() {
+void test_plateau_to_string(void) {
 
   string got = plateau_to_string ({{2,4,8,16}, {32,64,128,256}, {512,1024,2048,4096}, {0,0,0,0}});
   string expected = "*************************\n*  2  *  4  *  8  * 16  *\n*************************\n* 32  * 64  * 128 * 256 *\n*************************\n* 512 *1024 *2048 *4096 *\n*************************\n*     *     *     *     *\n*************************\n";
@@ -37,15 +32,13 @@ void test_plateau_to_string() {
 }
 
 
-/** Teste la fonction genere_nombre **/
-void test_genere_nombre() {
+void test_genere_nombre(void) {
   int nombre = genere_nombre();
   assert(nombre == 2 or nombre == 4);
 }
 
 
-/** Teste la fonction init_plateau **/
-void test_init_plateau() {
+void test_init_plateau(void) {
   Plateau tab = init_plateau(2);
   int nb_deux = 0;
   for(vector<int> ligne : tab) {
@@ -61,8 +54,7 @@ void test_init_plateau() {
 }
 
 
-/** Teste la fonction ajoute_nombre_plateau **/
-void test_ajoute_nombre_plateau() {
+void test_ajoute_nombre_plateau(void) {
   Plateau tab = {{0,2,0,2}, {2,0,2,0}, {2,2,0,0}, {0,0,2,2}};
   int nombre_deux_ou_quatre = 0;
   tab = ajoute_nombre_plateau(tab, genere_nombre());
@@ -77,8 +69,7 @@ void test_ajoute_nombre_plateau() {
 }
 
 
-/** Lance une serie de test pour la fonction score_nombre **/
-void test_score_nombre() {
+void test_score_nombre(void) {
   assert(score_nombre(0) == 0);
   assert(score_nombre(2) == 0);
   assert(score_nombre(4) == 4);
@@ -88,8 +79,7 @@ void test_score_nombre() {
 }
 
 
-/** Lance une serie de test pour la fonction score_plateau **/
-void test_score_plateau() {
+void test_score_plateau(void) {
   assert(score_plateau({{4,0,0,2},{8,0,0,0},{4,2,0,0},{64,16,4,0}}, 7) == 368);
   assert(score_plateau({{0,0,0,0},{0,0,0,0},{0,0,0,2},{8,0,2,0}}, 0) == 16);
   assert(score_plateau({{0,0,4,0},{0,0,0,0},{2,0,0,0},{16,4,2,0}}, 3) == 44);
@@ -97,16 +87,14 @@ void test_score_plateau() {
 }
 
 
-/** Lance une serie de test pour la fonction plateau_est_plein **/
-void test_plateau_est_plein() {
+void test_plateau_est_plein(void) {
   assert(not plateau_est_plein({{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
   assert(not plateau_est_plein({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,8,0}}));
   assert(plateau_est_plein({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2048,1024,512,256}}));
 }
 
 
-/** Lance une serie de test pour la fonction fin_de_partie **/
-void test_fin_de_partie() {
+void test_fin_de_partie(void) {
   assert(fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,2048,4096},{2,4,8,16}}));
   assert(fin_de_partie({{2,4,2,4},{4,2,4,2},{2,4,2,4},{4,2,4,2}}));
   assert(not fin_de_partie({{2,4,8,16},{32,64,128,256},{512,1024,0,4096},{2,4,8,16}}));
@@ -116,28 +104,15 @@ void test_fin_de_partie() {
 }
 
 
-/** Lance une serie de test pour la fonction valide_direction **/
-void test_valide_direction() {
-  assert(valide_direction("d"));
-  assert(valide_direction("g"));
-  assert(valide_direction("b"));
-  assert(valide_direction("h"));
-  assert(not valide_direction("z"));
-  assert(not valide_direction("a"));
+void test_char_to_direction(void) {
+  assert(char_to_direction('d') == Right);
+  assert(char_to_direction('g') == Left);
+  assert(char_to_direction('b') == Bottom);
+  assert(char_to_direction('h') == Top);
 }
 
 
-/** Lance une serie de test pour la fonction string_to_direction **/
-void test_string_to_direction() {
-  assert(string_to_direction("d") == Right);
-  assert(string_to_direction("g") == Left);
-  assert(string_to_direction("b") == Bottom);
-  assert(string_to_direction("h") == Top);
-}
-
-
-/** Lance une serie de test pour la fonction decalage_nombre **/
-void test_decalage_nombre() {
+void test_decalage_nombre(void) {
   Plateau tab_expected_d1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
   Plateau tab_expected_g1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
   Plateau tab_expected_b1 = {{16,2,16,16},{16,16,16,16},{4,2,2,4},{2,2,4,8}};
@@ -167,8 +142,7 @@ void test_decalage_nombre() {
 }
 
 
-/** Lance une serie de test pour la fonction deplacement **/
-void test_deplacement() {
+void test_deplacement(void) {
   Plateau tab_expected_d1 = {{0,16,2,32},{0,0,32,32},{0,4,4,4},{0,4,4,8}};
   Plateau tab_expected_g1 = {{16,2,32,0},{32,32,0,0},{4,4,4,0},{4,4,8,0}};
   Plateau tab_expected_b1 = {{0,0,0,0},{32,2,32,32},{4,16,2,4},{2,4,4,8}};
@@ -198,15 +172,7 @@ void test_deplacement() {
 }
 
 
-void test_commande_est_valide() {
-  assert(commande_est_valide("quit"));
-  assert(commande_est_valide("game"));
-  assert(not commande_est_valide("quitter"));
-  assert(not commande_est_valide("rejouer"));
-}
-
-
-void test_calcul_nombre_quatre() {
+void test_calcul_nombre_quatre(void) {
   assert(calcul_nombre_quatre(0, 2) == 0);
   assert(calcul_nombre_quatre(0, 4) == 1);
   assert(calcul_nombre_quatre(10, 2) == 10);
@@ -214,7 +180,7 @@ void test_calcul_nombre_quatre() {
 }
 
 
-void test_deplacement_possible() {
+void test_deplacement_possible(void) {
   Plateau tab = {{0,0,0,4},{2,4,8,16},{64,32,16,0},{0,0,0,0}};
   assert(deplacement_possible(Right, tab));
   assert(deplacement_possible(Left, tab));
@@ -241,8 +207,7 @@ void test_deplacement_possible() {
 }
 
 
-/** Fonction qui lance le test de toutes les fonctions **/
-void test_all() {
+void test_all(void) {
   test_plateau_to_string();
   test_genere_nombre();
   test_init_plateau();
@@ -251,11 +216,9 @@ void test_all() {
   test_score_plateau();
   test_plateau_est_plein();
   test_fin_de_partie();
-  test_valide_direction();
-  test_string_to_direction();
+  test_char_to_direction();
   test_decalage_nombre();
   test_deplacement();
-  test_commande_est_valide();
   test_calcul_nombre_quatre();
   test_deplacement_possible();
 }

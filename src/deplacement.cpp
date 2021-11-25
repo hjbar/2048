@@ -1,37 +1,21 @@
 #include "deplacement.hpp"
 
 
-/** Fonction qui verifie si la direction choisie est valide
- * @param c une chaine de caractere
- * @return true si valide, false sinon
- **/
-bool valide_direction(string c) {
-   return ( (c == "d") or (c == "g") or (c == "b") or (c == "h") );
-}
-
-
-/** Fonction qui transforme la chaine de caracteres en Direction
- * @param charactere une chaine de caracteres valant d, g, b ou h
- * @return une Direction entre Right / Left / Bottom / Top
- **/
-Direction string_to_direction(string charactere) {
-   if(charactere == "d") {
+optional<Direction> char_to_direction(const char charactere) {
+   if(charactere == 'd') {
       return Right;
-   } else if(charactere == "g") {
+   } else if(charactere == 'g') {
       return Left;
-   } else if(charactere == "b") {
+   } else if(charactere == 'b') {
       return Bottom;
-   } else {
+   } else if (charactere == 'h'){
       return Top;
+   } else {
+      return {};
    }
 }
 
 
-/** Fonction qui decale les nombres sont les additionner
- * @param d une Direction valant Right, Left, Top ou Bottom
- * @param tab un plateau de jeu
- * @return tab modifie
- ***/
 Plateau decalage_nombre(Direction d, Plateau tab) {
    if (d == Right) {
       for(int i = 0 ; i < 4 ; i++) {
@@ -85,11 +69,6 @@ Plateau decalage_nombre(Direction d, Plateau tab) {
 }
 
 
-/** Deplacement une fonction qui simule un deplacement de jeu
- * @param d une Direction valant Right, Left, Top ou Bottom
- * @param tab un plateau de jeu
- * @return tab modifie
- **/
 Plateau deplacement(Direction d, Plateau tab) {
    if (d == Right) {
       tab = decalage_nombre(d, tab);
