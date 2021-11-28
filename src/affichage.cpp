@@ -3,33 +3,33 @@
 
 string couleur_nombre(int nombre) {
    if(nombre <= 4) {
-      return green;
+      return GREEN;
    } else if(nombre <= 16) {
-      return purple;
+      return PURPLE;
    } else if(nombre <= 64) {
-      return blue;
+      return BLUE;
    } else if(nombre <= 512) {
-      return red;
+      return RED;
    } else if(nombre <= 2048) {
-      return yellow;
+      return YELLOW;
    } else {
-      return cyan;
+      return CYAN;
    }
 }
 
 
 string plateau_to_string(Plateau t) {
    ostringstream os;
-   os << white "*************************" reset << endl;
+   os << WHITE << "*************************" << RESET_COLOR << endl;
    for(vector<int> ligne : t) {
-      os << white "*" reset;
+      os << WHITE << "*" << RESET_COLOR;
       for(int nombre : ligne) {
          // On utilise la biblioteque fmt/core.h presente dans le standard de c++ 2020 qui aligne les nombres correctement sur un format de 5 characteres
          string s = nombre != 0 ? fmt::format("{:^5}", nombre) : "     ";
          os << couleur_nombre(nombre);
-         os << s << white "*" reset;
+         os << s << WHITE << "*" << RESET_COLOR;
       }
-      os << endl << white "*************************" reset << endl;
+      os << endl << WHITE << "*************************" << RESET_COLOR << endl;
    }
    return os.str();
 }
