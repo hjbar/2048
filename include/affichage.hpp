@@ -34,6 +34,13 @@ string couleur_nombre(int nombre);
 string plateau_to_string(Plateau t);
 
 
+/** Fonction qui tranforme le plateau de jeu en chaine de cracteres avec de la couleur
+ * @param t un Plateau qui correspond au plateau de jeu
+ * @return os.str() qui correspond au plateau de jeu sous forme de chaine de caracteres avec de la couleur
+ **/
+string plateau_to_string_avec_couleur(Plateau t);
+
+
 /** Fonction qui affiche le plateau de jeu
  * @param plateau une chaine de caracteres correspondant au plateau de jeu
  **/

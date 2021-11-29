@@ -11,7 +11,7 @@ void jeu(void) {
   nb_quatre = calcul_nombre_quatre(nb_quatre, new_nombre);
   tab = ajoute_nombre_plateau(tab, new_nombre);
   cout << endl;
-  affiche_plateau(plateau_to_string(tab));
+  affiche_plateau(plateau_to_string_avec_couleur(tab));
 
   // Debut de la partie
   while(not fin_de_partie(tab)) {
@@ -51,7 +51,7 @@ void jeu(void) {
 
      // On affiche le score et le plateau actualise avec le nouveau coup
      cout << endl << "Score : " << score_plateau(tab, nb_quatre) << endl;
-     affiche_plateau(plateau_to_string(tab));
+     affiche_plateau(plateau_to_string_avec_couleur(tab));
   }
   // La partie est finie, on affiche le score
   cout << endl << "Fin de partie" << endl;
