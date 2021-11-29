@@ -9,7 +9,7 @@ CPPFLAGS ?= -std=c++20 -W -Wall -Wextra -Wdouble-promotion -Wformat -Winit-self 
 
 INCLUDE := -I$(INCLUDE_DIR)
 
-LDFLAGS := -lfmt -lncurses -fPIE
+LDFLAGS := -lfmt -fPIE
 
 TARGET := $(NAME).exe
 HPP_FILES := $(wildcard $(INCLUDE_DIR)/*.hpp)

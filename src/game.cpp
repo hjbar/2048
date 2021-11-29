@@ -26,6 +26,7 @@ void jeu(void) {
 
         dir = char_to_direction(commande);
 
+
         if(commande == 'q') {
            cout << endl << "Vous venez de quitter la partie en cours" << endl;
            cout << "Votre score etait de : " << score_plateau(tab, nb_quatre) << endl;
@@ -52,7 +53,6 @@ void jeu(void) {
      cout << endl << "Score : " << score_plateau(tab, nb_quatre) << endl;
      affiche_plateau(plateau_to_string(tab));
   }
-
   // La partie est finie, on affiche le score
   cout << endl << "Fin de partie" << endl;
   cout << "Vous avez atteind le score de : " << score_plateau(tab, nb_quatre) << endl;

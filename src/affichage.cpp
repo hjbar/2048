@@ -24,7 +24,7 @@ string plateau_to_string(Plateau t) {
    for(vector<int> ligne : t) {
       os << WHITE << "*" << RESET_COLOR;
       for(int nombre : ligne) {
-         // On utilise la biblioteque fmt/core.h presente dans le standard de c++ 2020 qui aligne les nombres correctement sur un format de 5 characteres
+         // On utilise une biblioteque externe fmt/core.h qui permet d'implementer la biblioteque stdlib::fmt qui est presente dans le standard de c++ 2020 (mais non implementer dans le compilateur g++) qui permet d'aligne les nombres correctement sur un format de 5 characteres
          string s = nombre != 0 ? fmt::format("{:^5}", nombre) : "     ";
          os << couleur_nombre(nombre);
          os << s << WHITE << "*" << RESET_COLOR;

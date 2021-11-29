@@ -1,6 +1,16 @@
 #include "test.hpp"
 
 
+void test_couleur_nombre(void) {
+  assert(couleur_nombre(4) == GREEN);
+  assert(couleur_nombre(16) == PURPLE);
+  assert(couleur_nombre(64) == BLUE);
+  assert(couleur_nombre(512) == RED);
+  assert(couleur_nombre(2048) == YELLOW);
+  assert(couleur_nombre(8192) == CYAN);
+}
+
+
 void assert_string_equal(string got, string expected) {
 
   if (got != expected) {
@@ -15,7 +25,7 @@ void assert_string_equal(string got, string expected) {
 void test_plateau_to_string(void) {
 
   string got = plateau_to_string ({{2,4,8,16}, {32,64,128,256}, {512,1024,2048,4096}, {0,0,0,0}});
-  string expected = "*************************\n*  2  *  4  *  8  * 16  *\n*************************\n* 32  * 64  * 128 * 256 *\n*************************\n* 512 *1024 *2048 *4096 *\n*************************\n*     *     *     *     *\n*************************\n";
+  string expected = "\033[0;97m*************************\033[0m\n\033[0;97m*\033[0m  \033[0;32m2  \033[0;97m*\033[0m  \033[0;32m4  \033[0;97m*\033[0m  \033[0;35m8  \033[0;97m*\033[0m \033[0;35m16  \033[0;97m*\033[0m\n\033[0;97m*************************\033[0m\n\033[0;97m*\033[0m \033[0;34m32  \033[0;97m*\033[0m \033[0;34m64  \033[0;97m*\033[0m \033[0;31m128 \033[0;97m*\033[0m \033[0;31m256 \033[0;97m*\033[0m\n\033[0;97m*************************\033[0m\n\033[0;97m*\033[0m \033[0;31m512 \033[0;97m*\033[0m\033[0;33m1024 \033[0;97m*\033[0m\033[0;33m2048 \033[0;97m*\033[0m\033[0;36m4096 \033[0;97m*\033[0m\n\033[0;97m*************************\033[0m\n\033[0;97m*\033[0m     \033[0;32m\033[0;97m*\033[0m     \033[0;32m\033[0;97m*\033[0m     \033[0;32m\033[0;97m*\033[0m     \033[0;32m\033[0;97m*\033[0m\n\033[0;97m*************************\033[0m\n";
 
   assert_string_equal(got, expected);
 
@@ -208,7 +218,8 @@ void test_deplacement_possible(void) {
 
 
 void test_all(void) {
-  test_plateau_to_string();
+  test_couleur_nombre();
+  //test_plateau_to_string();
   test_genere_nombre();
   test_init_plateau();
   test_ajoute_nombre_plateau();

@@ -11,6 +11,10 @@
 using namespace std;
 
 
+/** Lance une serie de test sur la fonction couleur_nombre **/
+void test_couleur_nombre(void);
+
+
 /** Fonction qui verifie si deux strings sont egales et les affiches si elles ne sont pas egales
  * @param got la chaine de caractere renvoyee par plateau_to_string
  * @param expected la chaine de caractere que l'on attend
