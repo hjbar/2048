@@ -1,4 +1,6 @@
 #include "game.hpp"
+#include <string>
+#include <string.h>
 
 
 void jeu(void) {
@@ -18,14 +20,17 @@ void jeu(void) {
 
      // On va demander d'entrer une commande et verifier qu'elle est correcte
      char commande;
+     string commande_en_string;
      optional<Direction> dir = nullopt;
      while(not dir.has_value()) {
         cout << endl << "Entrer commande (h, b, g, d, q): " << endl;
-        cin >> commande;
+        //cin >> commande;
         // commande = (char) getch();
+        // Si l'utilisateur entre plusieurs charteres, cette technique permet de recuperer seulement le premier
+        cin >> commande_en_string;
+        commande = commande_en_string.at(0);
 
         dir = char_to_direction(commande);
-
 
         if(commande == 'q') {
            cout << endl << "Vous venez de quitter la partie en cours" << endl;
