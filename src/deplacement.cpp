@@ -1,6 +1,67 @@
 #include "deplacement.hpp"
 
 
+char getch(void) {
+   char buf = 0;
+   struct termios old = {};
+   if (tcgetattr(0, &old) < 0){
+      perror("tcsetattr()");
+   }
+   old.c_lflag &= ~ICANON;
+   old.c_lflag &= ~ECHO;
+   old.c_cc[VMIN] = 1;
+   old.c_cc[VTIME] = 0;
+   if (tcsetattr(0, TCSANOW, &old) < 0){
+      perror("tcsetattr ICANON");
+   }
+   if (read(0, &buf, 1) < 0){
+      perror ("read()");
+   }
+   old.c_lflag |= ICANON;
+   old.c_lflag |= ECHO;
+   if (tcsetattr(0, TCSADRAIN, &old) < 0){
+      perror ("tcsetattr ~ICANON");
+   }
+   return (buf);
+}
+
+
+char recupere_commande(void) {
+   char a = getch();
+
+   if(a == 'h' or a == 'b' or a == 'g' or a == 'd' or a =='q') {
+      return a;
+   }
+
+   if(a != '') {
+      // renvoyer 'n' ici permet de demander qu'un seul charactere si ce qu'il a ete entre n'est pas une fleche
+      return 'n';
+   }
+
+   char b = getch();
+   char c = getch();
+
+
+   if(a == '' and b == '[') {
+      // correspond a la fleche du haut
+      if(c == 'A') {
+         return 'h';
+      // correspond a la fleche du bas
+      } else if(c == 'B') {
+         return 'b';
+      // correspond a la fleche de droite
+      } else if(c == 'C') {
+         return 'd';
+      // correspond a la fleche de gauche
+      } else if (c == 'D') {
+         return 'g';
+      }
+   }
+   // renvoyer 'n' si le charactere n'est pas valide permet d'initialiser dir.value() à None et donc de refaire un tour de boucle
+   return 'n';
+}
+
+
 optional<Direction> char_to_direction(const char charactere) {
    if(charactere == 'd') {
       return Right;

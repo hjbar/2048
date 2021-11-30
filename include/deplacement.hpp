@@ -3,11 +3,25 @@
 #include <iostream>
 #include <optional>
 #include <vector>
+#include <unistd.h>
+#include <termios.h>
 
 using namespace std;
 
 typedef vector<vector<int>> Plateau;
 enum Direction { Left, Right, Top, Bottom };
+
+
+/** Fonction qui permet de recuperer un charactere au clavier sans avoir besoin d'appuyer sur "entree"
+ * @return buf un char qu'on recupere avec le clavier sans appuyer sur "entree"
+ **/
+char getch(void);
+
+
+/** Fonction qui permet de recuprer un charactere et le convertir en sa commande associee
+ * @return un char qui correspond a une direction ou une commande si l'entre est valide, sinon il renvoie un char permettant de relancer un tour de boucle au moment d'appeler cette fonction
+ **/
+char recupere_commande(void);
 
 
 /** Fonction qui transforme un caractere en Direction s'il correspond a une direction valide

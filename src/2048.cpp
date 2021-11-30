@@ -18,8 +18,7 @@ int main(void) {
       // On demande si le l'utilisateur veut rejouer ou non
       while(not (decision == 'g' or decision == 'q')) {
          cout << endl << "Entrer 'g' pour rejouer, entrer 'q' pour quitter le jeu" << endl;
-         decision = ' ';
-         cin >> decision;
+         decision = getch();
       }
       if(decision == 'q') {
          arret_partie = true;

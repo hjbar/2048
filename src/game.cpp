@@ -1,61 +1,6 @@
 #include "game.hpp"
 
 
-char getch() {
-        char buf = 0;
-        struct termios old = {};
-        if (tcgetattr(0, &old) < 0){
-                perror("tcsetattr()");
-        }
-        old.c_lflag &= ~ICANON;
-        old.c_lflag &= ~ECHO;
-        old.c_cc[VMIN] = 1;
-        old.c_cc[VTIME] = 0;
-        if (tcsetattr(0, TCSANOW, &old) < 0){
-                perror("tcsetattr ICANON");
-        }
-        if (read(0, &buf, 1) < 0){
-                perror ("read()");
-        }
-        old.c_lflag |= ICANON;
-        old.c_lflag |= ECHO;
-        if (tcsetattr(0, TCSADRAIN, &old) < 0){
-                perror ("tcsetattr ~ICANON");
-        }
-        return (buf);
-}
-
-
-char commande_cheate() {
-   char a = getch();
-
-   if(a == 'h' or a == 'b' or a == 'g' or a == 'd' or a =='q') {
-      return a;
-   }
-
-   if(a != '') {
-      return 'n';
-   }
-
-   char b = getch();
-   char c = getch();
-
-
-   if(a == '' and b == '[') {
-      if(c == 'A') {
-         return 'h';
-      } else if(c == 'B') {
-         return 'b';
-      } else if(c == 'C') {
-         return 'd';
-      } else if (c == 'D') {
-         return 'g';
-      }
-   }
-   return 'n';
-}
-
-
 void jeu(void) {
   // Initalisation du Plateau de jeu
   int nb_quatre = 0;
@@ -73,21 +18,11 @@ void jeu(void) {
 
      // On va demander d'entrer une commande et verifier qu'elle est correcte
      char commande;
-     string commande_en_string;
      optional<Direction> dir = nullopt;
      while(not dir.has_value()) {
-        cout << endl << "Entrer commande (h, b, g, d, q): " << endl;
+        cout << endl << "Entrer commande (h, b, g, d, q ou utiliser les flèches du clavier): " << endl;
 
-        /**
-        commande_en_string = getch();
-        if (commande_en_string == "[A"){
-           commande = 'h';
-        } else {
-           commande = commande_en_string.at(0);
-        }
-        **/
-
-        commande = commande_cheate();
+        commande = recupere_commande();
 
         dir = char_to_direction(commande);
 
@@ -98,6 +33,7 @@ void jeu(void) {
         }
 
         if(dir.has_value() and not deplacement_possible(dir.value(), tab)) {
+           // char_to_direction renvoie None car 'n' n'est pas une direction valide
            dir = char_to_direction('n');
            cout << endl << "Mouvement impossible" << endl;
         }
@@ -112,6 +48,7 @@ void jeu(void) {
         nb_quatre = calcul_nombre_quatre(nb_quatre, new_nombre);
         tab = ajoute_nombre_plateau(tab, new_nombre);
      }
+     // char_to_direction renvoie None car 'n' n'est pas une direction valide
 
      // On affiche le score et le plateau actualise avec le nouveau coup
      cout << endl << "Score : " << score_plateau(tab, nb_quatre) << endl;
