@@ -1,6 +1,59 @@
 #include "game.hpp"
-#include <string>
-#include <string.h>
+
+
+char getch() {
+        char buf = 0;
+        struct termios old = {};
+        if (tcgetattr(0, &old) < 0){
+                perror("tcsetattr()");
+        }
+        old.c_lflag &= ~ICANON;
+        old.c_lflag &= ~ECHO;
+        old.c_cc[VMIN] = 1;
+        old.c_cc[VTIME] = 0;
+        if (tcsetattr(0, TCSANOW, &old) < 0){
+                perror("tcsetattr ICANON");
+        }
+        if (read(0, &buf, 1) < 0){
+                perror ("read()");
+        }
+        old.c_lflag |= ICANON;
+        old.c_lflag |= ECHO;
+        if (tcsetattr(0, TCSADRAIN, &old) < 0){
+                perror ("tcsetattr ~ICANON");
+        }
+        return (buf);
+}
+
+
+char commande_cheate() {
+   char a = getch();
+
+   if(a == 'h' or a == 'b' or a == 'g' or a == 'd' or a =='q') {
+      return a;
+   }
+
+   if(a != '') {
+      return 'n';
+   }
+
+   char b = getch();
+   char c = getch();
+
+
+   if(a == '' and b == '[') {
+      if(c == 'A') {
+         return 'h';
+      } else if(c == 'B') {
+         return 'b';
+      } else if(c == 'C') {
+         return 'd';
+      } else if (c == 'D') {
+         return 'g';
+      }
+   }
+   return 'n';
+}
 
 
 void jeu(void) {
@@ -24,11 +77,17 @@ void jeu(void) {
      optional<Direction> dir = nullopt;
      while(not dir.has_value()) {
         cout << endl << "Entrer commande (h, b, g, d, q): " << endl;
-        //cin >> commande;
-        // commande = (char) getch();
-        // Si l'utilisateur entre plusieurs charteres, cette technique permet de recuperer seulement le premier
-        cin >> commande_en_string;
-        commande = commande_en_string.at(0);
+
+        /**
+        commande_en_string = getch();
+        if (commande_en_string == "[A"){
+           commande = 'h';
+        } else {
+           commande = commande_en_string.at(0);
+        }
+        **/
+
+        commande = commande_cheate();
 
         dir = char_to_direction(commande);
 
