@@ -2,6 +2,9 @@
 
 
 void jeu(void) {
+  // Refresh de l'ecran
+  reset_screen();
+
   // Initalisation du Plateau de jeu
   int nb_quatre = 0;
   int new_nombre = genere_nombre();
@@ -50,7 +53,11 @@ void jeu(void) {
      }
      // char_to_direction renvoie None car 'n' n'est pas une direction valide
 
+     // On refresh l'ecran
+     reset_screen();
+
      // On affiche le score et le plateau actualise avec le nouveau coup
+     reset_screen();
      cout << endl << "Score : " << score_plateau(tab, nb_quatre) << endl;
      affiche_plateau(plateau_to_string_avec_couleur(tab));
   }

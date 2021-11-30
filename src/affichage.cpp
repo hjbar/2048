@@ -1,5 +1,10 @@
 #include "affichage.hpp"
-#include <algorithm>
+
+
+void reset_screen(void) {
+   write(STDOUT_FILENO, "\033[2J", 4);
+   write(STDOUT_FILENO, "\033[H", 3);
+}
 
 
 string couleur_nombre(int nombre) {

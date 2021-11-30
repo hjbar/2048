@@ -4,7 +4,8 @@
 #include <sstream>
 #include <vector>
 #include <fmt/core.h>
-#include <string>
+#include <unistd.h>
+
 
 using namespace std;
 
@@ -18,6 +19,10 @@ typedef vector<vector<int>> Plateau;
 #define PURPLE "\033[0;35m"
 #define CYAN "\033[0;36m"
 #define RESET_COLOR "\033[0m"
+
+
+/** Fonction qui rafraichit l'ecran **/
+void reset_screen(void);
 
 
 /** Fonction qui renvoie la chaine de caracteres permettant d'afficher les nombres en couleur dans la console

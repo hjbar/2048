@@ -1,5 +1,6 @@
 #include "2048.hpp"
 
+
 /** Lance le jeu **/
 int main(void) {
 
@@ -24,6 +25,7 @@ int main(void) {
          arret_partie = true;
       }
    }
+   reset_screen();
    cout << endl << "Merci d'avoir joué ! A bientot :)" << endl;
 
    return 0;
