@@ -57,10 +57,6 @@ void jeu(void)
 			nb_quatre = calcul_nombre_quatre(nb_quatre, new_nombre);
 			tab = ajoute_nombre_plateau(tab, new_nombre);
 		}
-		// char_to_direction renvoie None car 'n' n'est pas une direction valide
-
-		// On refresh l'ecran
-		reset_screen();
 
 		// On affiche le score et le plateau actualise avec le nouveau coup
 		reset_screen();

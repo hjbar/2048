@@ -2,8 +2,8 @@
 
 void reset_screen(void)
 {
-	write(STDOUT_FILENO, "\033[2J", 4);
-	write(STDOUT_FILENO, "\033[H", 3);
+	cout << "\033[2J";
+	cout << "\033[H";
 }
 
 string couleur_nombre(int nombre)
