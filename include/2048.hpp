@@ -3,8 +3,8 @@
 #include <iostream>
 
 #include "affichage.hpp"
-#include "plateau.hpp"
 #include "deplacement.hpp"
-#include "test.hpp"
-#include "score.hpp"
 #include "game.hpp"
+#include "plateau.hpp"
+#include "score.hpp"
+#include "test.hpp"

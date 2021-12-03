@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <optional>
+#include <vector>
 
 #include "affichage.hpp"
 #include "deplacement.hpp"
@@ -12,7 +12,6 @@
 using namespace std;
 
 typedef vector<vector<int>> Plateau;
-
 
 /** Fonction qui simule une partie de 2048 **/
 void jeu(void);

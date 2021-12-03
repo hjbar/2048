@@ -38,3 +38,7 @@ clean:
 
 mrproper: clean
 	rm -f $(TARGET)
+
+fmt:
+	find src/ -iname \*.cpp | xargs clang-format -style=file -i
+	find include/ -iname \*.hpp | xargs clang-format -style=file -i
