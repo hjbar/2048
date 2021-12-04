@@ -1,5 +1,6 @@
 #include "deplacement.hpp"
 
+/**
 char getch(void)
 {
 	char buf = 0;
@@ -73,6 +74,7 @@ char recupere_commande(void)
 	// renvoyer 'n' si le charactere n'est pas valide permet d'initialiser dir.value() à None et donc de refaire un tour de boucle
 	return 'n';
 }
+**/
 
 optional<Direction> char_to_direction(const char charactere)
 {

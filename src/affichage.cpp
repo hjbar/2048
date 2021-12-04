@@ -1,6 +1,6 @@
 #include "affichage.hpp"
 
-void reset_screen(void)
+void nouveau_ecran(void)
 {
 	cout << "\033[2J";
 	cout << "\033[H";

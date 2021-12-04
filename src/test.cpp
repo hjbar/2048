@@ -10,7 +10,7 @@ void test_couleur_nombre(void)
 	assert(couleur_nombre(8192) == CYAN);
 }
 
-void assert_string_equal(string got, string expected)
+void test_string_equal(string got, string expected)
 {
 
 	if(got != expected)
@@ -35,7 +35,7 @@ void test_plateau_to_string(void)
 		"*************************\n*  2  *  4  *  8  * 16  *\n*************************\n* 32  * "
 		"64  * 128 * 256 *\n*************************\n* 512 *1024 *2048 *4096 "
 		"*\n*************************\n*     *     *     *     *\n*************************\n";
-	assert_string_equal(got, expected);
+	test_string_equal(got, expected);
 
 	string got2 = plateau_to_string({{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}});
 	string expected2 =
@@ -43,7 +43,7 @@ void test_plateau_to_string(void)
 		"   *     *     *\n*************************\n*     *     *     *     "
 		"*\n*************************\n*     *     *     *     *\n*************************\n";
 
-	assert_string_equal(got2, expected2);
+	test_string_equal(got2, expected2);
 
 	string got3 = plateau_to_string(
 		{{2, 4, 8, 16}, {32, 64, 128, 256}, {512, 1024, 2048, 4096}, {8192, 4096, 2048, 1024}});
@@ -52,7 +52,7 @@ void test_plateau_to_string(void)
 		"64  * 128 * 256 *\n*************************\n* 512 *1024 *2048 *4096 "
 		"*\n*************************\n*8192 *4096 *2048 *1024 *\n*************************\n";
 
-	assert_string_equal(got3, expected3);
+	test_string_equal(got3, expected3);
 }
 
 void test_genere_nombre(void)

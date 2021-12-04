@@ -19,28 +19,39 @@ typedef vector<vector<int>> Plateau;
 #define CYAN "\033[0;36m"
 #define RESET_COLOR "\033[0m"
 
-/** Fonction qui rafraichit l'ecran **/
-void reset_screen(void);
+/** Fonction qui rafraichit l'ecran
+ * Fonction ecrite par Hugo
+ * Niveau de confiance : 1/2 car non testee
+ **/
+void nouveau_ecran(void);
 
 /** Fonction qui renvoie la chaine de caracteres permettant d'afficher les nombres en couleur dans la console
  * @param nombre un nombre entier que l'on veut afficher dans une certaine couleur
  * @return une string correspond a la bonne couleur associee au nombre en parametre
+ * Fonction ecrite par Hugo
+ * Niveau de confiance : 2/2 car testee
  **/
 string couleur_nombre(int nombre);
 
 /** Fonction qui tranforme le plateau de jeu en chaine de cracteres
  * @param t un Plateau qui correspond au plateau de jeu
  * @return os.str() qui correspond au plateau de jeu sous forme de chaine de caracteres
+ * Fonction ecrite par Hugo
+ * Niveau de confiance : 2/2 car testee
  **/
 string plateau_to_string(Plateau t);
 
 /** Fonction qui tranforme le plateau de jeu en chaine de cracteres avec de la couleur
  * @param t un Plateau qui correspond au plateau de jeu
  * @return os.str() qui correspond au plateau de jeu sous forme de chaine de caracteres avec de la couleur
+ * Fonction ecrite par Hugo
+ * Niveau de confiance : 1.5/2 car partiellement testee
  **/
 string plateau_to_string_avec_couleur(Plateau t);
 
 /** Fonction qui affiche le plateau de jeu
  * @param plateau une chaine de caracteres correspondant au plateau de jeu
+ * Fonction ecrite par Hugo
+ * Niveau de confiance : 1.5/2 car partiellement testee
  **/
 void affiche_plateau(string plateau);

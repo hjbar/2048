@@ -1,19 +1,19 @@
 #include "plateau.hpp"
 
-float random_float(void)
+float alea_float(void)
 {
 	const int rnd = rand();
 	return ((float)rnd / (float)RAND_MAX);
 }
 
-int random_int(const int min, const int max)
+int alea_int(const int min, const int max)
 {
-	return (int)((float)min + ((float)(max - min + 1) * random_float()));
+	return (int)((float)min + ((float)(max - min + 1) * alea_float()));
 }
 
 int genere_nombre(void)
 {
-	return random_int(1, 10) == 10 ? 4 : 2;
+	return alea_int(1, 10) == 10 ? 4 : 2;
 }
 
 Plateau init_plateau(const int nombre)
@@ -27,8 +27,8 @@ Plateau init_plateau(const int nombre)
 			tab[i][j] = 0;
 		}
 	}
-	int x = random_int(0, 3);
-	int y = random_int(0, 3);
+	int x = alea_int(0, 3);
+	int y = alea_int(0, 3);
 	tab[x][y] = nombre;
 	return tab;
 }
@@ -38,8 +38,8 @@ Plateau ajoute_nombre_plateau(Plateau tab, int nombre)
 	bool case_libre = false;
 	while(not case_libre)
 	{
-		int x = random_int(0, 3);
-		int y = random_int(0, 3);
+		int x = alea_int(0, 3);
+		int y = alea_int(0, 3);
 		if(tab[x][y] == 0)
 		{
 			tab[x][y] = nombre;

@@ -4,7 +4,7 @@
 
 #include "affichage.hpp"
 #include "deplacement.hpp"
-#include "game.hpp"
+#include "partie.hpp"
 #include "plateau.hpp"
 #include "score.hpp"
 #include "test.hpp"

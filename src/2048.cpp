@@ -21,14 +21,14 @@ int main(void)
 		while(not(decision == 'g' or decision == 'q'))
 		{
 			cout << endl << "Entrer 'g' pour rejouer, entrer 'q' pour quitter le jeu" << endl;
-			decision = getch();
+			cin >> decision;
 		}
 		if(decision == 'q')
 		{
 			arret_partie = true;
 		}
 	}
-	reset_screen();
+	nouveau_ecran();
 	cout << endl << "Merci d'avoir joué ! A bientot :)" << endl;
 
 	return 0;

@@ -1,9 +1,9 @@
-#include "game.hpp"
+#include "partie.hpp"
 
 void jeu(void)
 {
 	// Refresh de l'ecran
-	reset_screen();
+	nouveau_ecran();
 
 	// Initalisation du Plateau de jeu
 	int nb_quatre = 0;
@@ -21,14 +21,15 @@ void jeu(void)
 	{
 
 		// On va demander d'entrer une commande et verifier qu'elle est correcte
+		string commande_en_string;
 		char commande;
 		optional<Direction> dir = nullopt;
 		while(not dir.has_value())
 		{
-			cout << endl
-				 << "Entrer commande (h, b, g, d, q ou utiliser les flèches du clavier): " << endl;
+			cout << endl << "Entrer commande (h, b, g, d ou q): " << endl;
 
-			commande = recupere_commande();
+			cin >> commande_en_string;
+			commande = commande_en_string.at(0);
 
 			dir = char_to_direction(commande);
 
@@ -59,7 +60,7 @@ void jeu(void)
 		}
 
 		// On affiche le score et le plateau actualise avec le nouveau coup
-		reset_screen();
+		nouveau_ecran();
 		cout << endl << "Score : " << score_plateau(tab, nb_quatre) << endl;
 		affiche_plateau(plateau_to_string_avec_couleur(tab));
 	}
