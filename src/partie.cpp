@@ -31,6 +31,10 @@ void jeu(void)
 			cin >> commande_en_string;
 			commande = commande_en_string.at(0);
 
+			/**
+			 * commande = recupere_commande();
+			 **/
+
 			dir = char_to_direction(commande);
 
 			if(commande == 'q')

@@ -22,6 +22,10 @@ int main(void)
 		{
 			cout << endl << "Entrer 'g' pour rejouer, entrer 'q' pour quitter le jeu" << endl;
 			cin >> decision;
+
+			/**
+			 * decision = getch();
+			 **/
 		}
 		if(decision == 'q')
 		{
